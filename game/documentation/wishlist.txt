@@ -1,0 +1,13 @@
+WISHLIST:
+
+- Scores
+	Maybe the game should calculate cryptographic hashes (MD5, SHA1) of
+	terrain files and use them to keep scores separate?  That is, if
+	someone changes a terrain file, the old scores collected on that file
+	should be rendered null and void.
+
+- Configurable ANSI color
+
+- A random terrain generator
+
+- A random file picker from a terrain directory

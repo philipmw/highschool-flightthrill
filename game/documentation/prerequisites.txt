@@ -1,0 +1,6 @@
+Before FlightThrill can be successfully compiled and executed, the following
+packages must be present on the system:
+
+- g++ (GCC) 2.x or 3.x (tested with 3.3.2)
+- GNU readline
+- ncurses (tested with 5.3)

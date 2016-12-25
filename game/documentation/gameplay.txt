@@ -1,0 +1,46 @@
+			FlightThrill GAMEPLAY MANUAL
+
+PRE-PLAY
+	You must have a terrain file.  The program itself does not come with
+	terrains; it is only able to load a separate text file containing
+	terrain data.  Information on creating such file is outside the scope
+	of this document.
+
+	Also, it is not recommended to play on terminals that are not at least
+	100 rows in height -- you will not have the desired granularity of
+	copter control.
+
+PLAY
+	When the game first begins, your helicopter is resting on its "launch
+	pad", waiting for you to begin ascent.  As soon as ascent begins, the
+	helicopter will not stop or slow down until either the terrain ends or
+	until it collides.
+
+	At some points during your flight you may encounter objects (other
+	than walls) in your path.  Those are special shield packs that, if
+	triggered, give your helicopter temporary protection from collision.
+	Here is how it works: when you guide the copter to a block where a
+	shield exists, the shield will disappear and your status bar will
+	display your new shielded status and how much longer you can rely on
+	this wonder.  Each new shield is configured with its own lifetime
+	period which is added to the helicopter's total protection duration.
+	The lifetime period of each shield is specified in the terrain file.
+	While you are shielded, you are somewhat impervious to collisions.  If
+	you collide with anything while protected, you will be "bounced" to
+	the middle of empty space in that part of the terrain and your
+	acceleration will be nullified.
+	(See "known issues.txt" for a... known issue... with shields.)
+
+	At any time, you may press the F1 key to pause the game.  Use the same
+	key to unpause it.  A pause affects absolutely nothing in the game --
+	your position, velocity, acceleration, and protection are unchanged.
+
+POST-PLAY
+	The game ends if you either collide with anything while unshielded or
+	if you reach the end of the terrain.  After the game ends, it displays
+	statistics about your play and calculates a score.  The score depends
+	on the distance that your copter traveled and the amount of fuel you
+	used.
+
+
+Last update: 19 July 2004

@@ -1,0 +1,30 @@
+KNOWN ISSUES:
+
+- No `configure` script.  Online documentation of autoconf/automake is too
+  vague/incomplete/unintuitive for me to figure it out.  Submissions welcome.
+
+- The Makefile is very amateurish, redundant, and does not correctly see when
+  something has been already done; it insists on compiling everything from
+  scratch every time.
+
+- Occasionally the Y coordinate of the copter exhibits an off-by-one error
+  while falling to its demise: the copter falls down one column using a
+  neighboring column's terrain information, so it either falls "through" the
+  stalagmite, or crashes before reaching the top of the stalagmite.  I've not
+  been able to figure out why, but I haven't tried very hard.
+
+- I am sure that at least one function in generic.cpp/generic.h is provided by
+  standard C/C++ libraries.  It would be good to replace my own
+  implementations thereof with standard ones.
+
+- Sometimes it appears that the game is cheating because even though the
+  copter goes right through shields, it does not activate them.  The problem
+  is that the way the shield code works, it samples the background and if the
+  copter has LANDED directly on a shield, it activates it.  However, if it
+  passes it, then it gets ignored.  The way I've written it, the code is very
+  simple and neat; sensing shields that the copter passed would probably be
+  more complex and nasty.  It may even have to change the structure of the
+  game loop.
+
+
+Last update: 19 July 2004

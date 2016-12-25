@@ -1,0 +1,95 @@
+	HOW TO CREATE YOUR OWN TERRAIN
+
+1) Why?
+	FlightThrill allows you to create your own terrains to greatly boost
+	the enjoyment of the game and to allow as much flexibility as
+	possible.  Being able to create your own terrain allows the game to
+	fit the audience, serving either as a simple time-killer or a
+	challenging exercise.
+	It's also fun to evilly cackle as your friends futilely attempt to
+	navigate through your terrain, crash, and fall to the ground in a heap
+	of burning copter parts!
+
+2) How?
+	FlightThrill prompts you for a filename of a plain text file that
+	contains terrain data.  The terrain file has one line for each column
+	(bit) of the terrain.  Each line contains two integers: the size of
+	the stalactite (top), and the size of the stalagmite (bottom),
+	expressed in relative percentages.
+
+	Besides just these numbers, you can also have blank lines for
+	aesthetics and comment lines that begin with the hashmark (#) to
+	convey information to those who look at your terrain without affecting
+	how FlightThrill parses the file.  The comment will be ignored by the
+	parser only if the line BEGINS with a hashmark, or with whitespace
+	followed by a hashmark.
+
+	A feature that your terrain may have is shields.  You may set up one
+	shield for every step of your terrain.  The shield should be defined
+	on a separate line immediately after the definition of your desired
+	step.  The line should begin with the word "shield: " and must end
+	with two integers: one for the Y coordinate as a percentage, and the
+	other for the shield's lifetime in steps.  For example, "shield: 50
+	42" will create a shield vertically in the middle of a step, which,
+	when activated, will last for 42 next consecutive steps.
+
+	A shield is activated by the helicopter by passing over that precise
+	block.  Once activated, the shield disappears from the landscape and
+	is assumed to in effect.  The status bar will indicate the duration of
+	protection provided.  Shields may be superimposed upon the helicopter
+	for longer duration (but not for more protection).  If the copter is
+	protected by a shield and activates another one, the new shield's
+	duration will be added to the copter's overall protection duration.
+	Also, every terrain must have several lines for its metadata.  The
+	following lines will display each line and describe it.
+		Author:
+	Your name as the author of a terrain so that the program will display
+	it in its status bar at the beginning of the game.
+		Title:
+	The name of your terrain so that the program will display it in its
+	status bar at the beginning of the game.
+		Success message:
+	The message that appears on the player's screen after (s)he has
+	successfully navigated to the end of it.  If you lack in the
+	imagination department, you could put "none" instead and the program
+	will use its stock hard-coded message.
+		Death message:
+	The message that appears on the player's screen if (s)he crashes the
+	helicopter.  If you lack in the imagination department, you could put
+	"none" instead and the program will use its stock hard-coded message.
+		Copter start:
+	An integer representing the X coordinate of the copter's initial
+	position during take-off.  It is expressed in a screen percentage.
+		Step delay:
+	An integer representing the general delay, in milliseconds, of the
+	game after each step of the copter.  The higher the value, the slower
+	the helicopter travels.
+		Gravity:
+	A decimal value representing the gravity of the terrain.  The higher
+	the value, the more the helicopter is attracted to the bottom, and the
+	faster it will fall without continued sustenance.  Note that this
+	value is not proportional to any real-world gravity value such as 9.81
+	or 32.
+
+3) An example.
+	Author: First Last
+	Title: My Shweet Terrain
+	Success message: You win!  Your copter r0x0rs!
+	Death message: pwned.  You suck.
+	Copter start: 10
+	Step delay: 200
+	Gravity: 3.47
+	10 10
+	# my terrain is already cool!
+	20 20
+	30 30
+	0 0
+	#this landscape will be so tough that shields will be necessary
+	shield: 40 5
+	15 15
+	45 45
+		# whitespace indents are ignored by the program
+	0 0
+
+
+Last update: 19 July 2004
