@@ -2,11 +2,12 @@ PROGS = copter tviewer tprinter
 
 CC	= g++
 CFLAGS	= -Wall -pipe -pedantic -DDATESTAMP="\"`date +%Y-%m-%d`\""
-#CFLAGS	= -Wall -pipe -pedantic -DDATESTAMP="\"`date +%Y-%m-%d`\"" -mcpu=i386 -static
-LDFLAGS = 
+ifeq ($(STATIC),1)
+LDFLAGS += -static
+endif
+LIBS = -lreadline -lncurses
 BIN_DIR = bin
 OBJ_DIR = obj
-SHARED_LIBS =
 
 BINS = $(addprefix $(BIN_DIR)/, $(PROGS))
 SRCS = $(wildcard *.cpp)
@@ -20,7 +21,7 @@ OBJS_TPRINTER = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, tprinter $(__OBJS1)))
 all:	static-notice make-dirs $(BINS)
 
 static-notice:
-	@echo "For building statically-linked binaries, uncomment Makefile's commented-out CFLAGS."
+	@echo "For building statically-linked binaries, make with STATIC=1"
 
 make-dirs:
 	@mkdir -p $(BIN_DIR) $(OBJ_DIR)
@@ -35,10 +36,8 @@ $(OBJS): $(OBJ_DIR)/%.o : %.cpp
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(BIN_DIR)/copter: $(OBJS_COPTER)
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $^ $(SHARED_LIBS) -lreadline -lncurses
-
+	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
 $(BIN_DIR)/tviewer: $(OBJS_TVIEWER)
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $^ $(SHARED_LIBS) -lreadline -lncurses
-
+	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
 $(BIN_DIR)/tprinter: $(OBJS_TPRINTER)
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $^ $(SHARED_LIBS) -lreadline -lncurses
+	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
