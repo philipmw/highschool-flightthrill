@@ -3,7 +3,7 @@
 #ifndef _COPTER_H_
 #define _COPTER_H_
 
-typedef class Copter {
+class Copter {
 	public:
 		Copter(int, int, int, int, int, int);
 		// accessors
