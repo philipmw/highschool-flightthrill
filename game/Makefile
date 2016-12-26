@@ -8,17 +8,18 @@ BIN_DIR = bin
 OBJ_DIR = obj
 SHARED_LIBS =
 
-all:	static-notice $(PROGS)
+all:	static-notice make-dirs $(PROGS)
 
 static-notice:
 	@echo "For building statically-linked binaries, uncomment Makefile's commented-out CFLAGS."
 
+make-dirs:
+	@mkdir -p $(BIN_DIR) $(OBJ_DIR)
+.PHONY: make-dirs
+
 clean:
 	rm -fv *~ \#* core
-	rm -fv $(OBJ_DIR)/*
-	cd $(BIN_DIR)
-	rm -fv $(PROGS)
-	cd ..
+	$(RM) -r $(BIN_DIR) $(OBJ_DIR)
 	rm -fv config.log config.status
 
 game.o: game.cpp
