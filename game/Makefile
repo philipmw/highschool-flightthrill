@@ -1,6 +1,6 @@
 PROGS = copter tviewer tprinter
 
-CC	= g++
+CXX    ?= g++
 CFLAGS	= -Wall -pipe -pedantic -DDATESTAMP="\"`date +%Y-%m-%d`\""
 ifeq ($(STATIC),1)
 LDFLAGS += -static
@@ -28,16 +28,16 @@ make-dirs:
 .PHONY: make-dirs
 
 clean:
-	rm -fv *~ \#* core
+	$(RM) -v *~ \#* core
 	$(RM) -r $(BIN_DIR) $(OBJ_DIR)
-	rm -fv config.log config.status
+	$(RM) -v config.log config.status
 
 $(OBJS): $(OBJ_DIR)/%.o : %.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CXX) $(CFLAGS) -c -o $@ $<
 
 $(BIN_DIR)/copter: $(OBJS_COPTER)
-	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 $(BIN_DIR)/tviewer: $(OBJS_TVIEWER)
-	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 $(BIN_DIR)/tprinter: $(OBJS_TPRINTER)
-	g++ $(LDFLAGS) -o $@ $^ $(LIBS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
