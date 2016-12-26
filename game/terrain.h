@@ -5,14 +5,14 @@
 
 #include <string>
 
-typedef struct Step {
+struct Step {
 	int sct; // stalactite percentage
 	int sgm; // stalagmite percentage
 	int shield_y; // shield Y coordinate
 	int shield_duration; // shield lifetime
 };
 
-typedef struct TerrainMetadata {
+struct TerrainMetadata {
 	std::string author;
 	std::string title;
 	std::string success_msg;
